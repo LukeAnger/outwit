@@ -24,13 +24,13 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(9, 5vw);
-  grid-template-rows: repeat(10, 5vw);
+  grid-template-columns: repeat(9, min(5vw, 64px));
+  grid-template-rows: repeat(10, min(5vw, 64px));
 }
 
 .board > div {
-  width: 5vw;
-  height: 5vw;
+  width: min(5vw, 64px);
+  height: min(5vw, 64px);
   border: 1px solid black;
   display: grid;
   place-content: center;
@@ -59,8 +59,8 @@
 }
 
 .piece {
-  width: 3.75vw;
-  height: 3.75vw;
+  width: min(3.75vw, 48px);
+  height: min(3.75vw, 48px);
   border-radius: 50%;
   border: 1px solid black;
   cursor: pointer;
@@ -97,35 +97,35 @@
 
 @media screen and (max-width: 1200px) {
   .board {
-    grid-template-columns: repeat(9, 6vw);
-    grid-template-rows: repeat(10, 6vw);
+    grid-template-columns: repeat(9, max(5vw, 52px));
+    grid-template-rows: repeat(10, max(5vw, 52px));
   }
 
   .board > div {
-    width: 6vw;
-    height: 6vw;
+    width: max(5vw, 52px);
+    height: max(5vw, 52px);
   }
 
   .piece {
-    width: 4.5vw;
-    height: 4.5vw;
+    width: max(3.75vw, 39px);
+    height: max(3.75vw, 39px);
   }
 }
 
 @media screen and (max-width: 900px) {
   .board {
-    grid-template-columns: repeat(9, 8vw);
-    grid-template-rows: repeat(10, 8vw);
+    grid-template-columns: repeat(9, max(6.8vw, 52px));
+    grid-template-rows: repeat(10, max(6.8vw, 52px));
   }
 
   .board > div {
-    width: 8vw;
-    height: 8vw;
+    width: max(6.8vw, 52px);
+    height: max(6.8vw, 52px);
   }
 
   .piece {
-    width: 6vw;
-    height: 6vw;
+    width: max(5.1vw, 39px);
+    height: max(5.1vw, 39px);
   }
 }
 
