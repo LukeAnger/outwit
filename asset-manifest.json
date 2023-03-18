@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/react-template/static/js/main.3d733c1e.js",
+    "index.html": "/react-template/index.html",
+    "main.3d733c1e.js.map": "/react-template/static/js/main.3d733c1e.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.3d733c1e.js"
+  ]
+}
