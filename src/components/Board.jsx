@@ -9,7 +9,13 @@ const Board = () => {
   const [highlighted, setHighlighted] = useState([])
   const [currentPiece, setCurrentPiece] = useState({})
   const [isClicked, setIsClicked] = useState(false)
+  const [score, setScore] = useState({ player1: 0, player2: 0 })
 
+  const [turn, setTurn] = useState(1)
+
+  if (score.player1 === 9 || score.player2 === 9) {
+    score.player1 === 9 ? alert('Player 1 Wins!') : alert('Player 2 Wins!')
+  }
 
   const changeCurrentPiece = (obj) => {
     !currentPiece.pos ? setCurrentPiece(obj) : setCurrentPiece({})
@@ -32,44 +38,22 @@ const Board = () => {
       if (i > 90 || i < 0) return
       let edge = "edge" + dir
       if (!board[i].occupied) {
-        if (type === 1) {
+        if (type === 1 || type === 2) {
           if (board[i].zone !== 2) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
           }
-        } else if (type === 3) {
+        } else if (type === 3 || type === 4) {
           if (board[i].zone !== 3) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
           }
-        } else if (type === 2) {
-          if (board[i].zone !== 2) {
-            path[dir].push(i)
-            return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 4) {
-          if (board[i].zone !== 3) {
-            path[dir].push(i)
-            return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 5) {
+        } else if (type === 5 || type === 6) {
           if (board[i].zone === 3) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
           }
-        } else if (type === 6) {
-          console.log(board[i].zone)
-          if (board[i].zone === 3) {
-            console.log('IN THE ZONE')
-            path[dir].push(i)
-            return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 7) {
-          if (board[i].zone === 2) {
-            path[dir].push(i)
-            return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 8) {
+        } else if (type === 7 || type === 8) {
           if (board[i].zone === 2) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
@@ -94,12 +78,10 @@ const Board = () => {
       dfs(obj.edgeSW - 1, "SW", obj.occupied)
       dfs(obj.edgeSE - 1, "SE", obj.occupied)
     }
-    console.log(path)
     if (obj.occupied === 1 || obj.occupied === 3 || obj.occupied === 5 || obj.occupied === 7) {
       setBoard(board => {
         for (let key in path) {
             if (path[key].length > 0) {
-              // console.log(path[key][path[key].length - 1])
               board[path[key][path[key].length - 1]].highlight = true
             }
 
@@ -119,12 +101,10 @@ const Board = () => {
 
 
     if (obj.occupied === 1 || obj.occupied === 3 || obj.occupied === 5 || obj.occupied === 7) {
-      // console.log(path)
       for (let key in path) {
         setHighlighted(highlighted => [...highlighted, path[key].pop() + 1])
       }
     } else if (obj.occupied === 2 || obj.occupied === 4 || obj.occupied === 6 || obj.occupied === 8) {
-      // console.log(path)
       for (let key in path) {
         for (let i = 0; i < path[key].length; i++) {
           setHighlighted(highlighted => [...highlighted, path[key][i] + 1])
@@ -136,19 +116,29 @@ const Board = () => {
   }
 
   const movePiece = (obj) => {
-    let i = board[obj.pos - 1]
-    let type = currentPiece.occupied
-    console.log('TYPE', type, 'POS', obj.pos, currentPiece)
-    if (currentPiece.pos) {
-      setBoard(board => {
-        board[currentPiece.pos - 1].occupied = null;
-        board[obj.pos - 1].occupied = type
-        if (obj.zone !== 1 && type < 5) {
-          board[obj.pos - 1].occupied = type + 4
+    // turn handling is also handled in Piece.jsx in handleClick function
+    if (!currentPiece.pos) return // check if there is a piece selected
+
+    let i = board[obj.pos - 1] // assign board index
+    let type = currentPiece.occupied // assign piece type
+
+
+    turn === 1 ? setTurn(turn => turn + 1) : setTurn(turn => turn - 1)
+
+    setBoard(board => {
+      board[currentPiece.pos - 1].occupied = null;
+      board[obj.pos - 1].occupied = type
+      if (obj.zone !== 1 && type < 5) {
+        if (obj.zone === 2) {
+          setScore(score => ({...score, player1: score.player1 + 1}))
+        } else if (obj.zone === 3) {
+          setScore(score => ({...score, player2: score.player2 + 1}))
         }
-        return board
-      })
-    }
+        board[obj.pos - 1].occupied = type + 4
+      }
+      return board
+    })
+
   }
 
   const clearHighlights = () => {
@@ -171,6 +161,7 @@ const Board = () => {
           obj={obj}
           key={obj.pos}
           board={board}
+          turn={turn}
           pathFinder={pathFinder}
           highlighted={highSet}
           movePiece={movePiece}

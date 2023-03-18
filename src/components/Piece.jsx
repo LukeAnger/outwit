@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 
-const Piece = ( { obj, pathFinder, clearHighlights, changeCurrentPiece } ) => {
+const Piece = ( { obj, pathFinder, clearHighlights, changeCurrentPiece, turn } ) => {
 
   const [isClicked, setIsClicked] = useState(false)
+  let type = obj.occupied
+
 
   const handleClick = () => {
-    setIsClicked(!isClicked)
     pathFinder(obj)
-    changeCurrentPiece(obj)
-    isClicked ? clearHighlights() : null
-    console.log(obj.occupied)
+    if (turn === 1 && (type === 1 || type === 2 || type === 5 || type === 6)) {
+      setIsClicked(!isClicked)
+      changeCurrentPiece(obj)
+      isClicked ? clearHighlights() : null
+    } else if (turn === 2 && (type === 3 || type === 4 || type === 7 || type === 8)) {
+      setIsClicked(!isClicked)
+      changeCurrentPiece(obj)
+      isClicked ? clearHighlights() : null
+    }
+
   }
 
   return (
