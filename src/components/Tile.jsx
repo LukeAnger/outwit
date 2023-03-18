@@ -22,9 +22,6 @@ const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, change
     if (obj.highlight) {
       movePiece(obj);
     }
-    if (obj.zone !== 1) {
-      console.log('IN THE ZONE')
-    }
     test ? clear() : null;
   };
   name = name + highlight;

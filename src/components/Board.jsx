@@ -52,17 +52,39 @@ const Board = () => {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
           }
+        } else if (type === 5) {
+          if (board[i].zone === 3) {
+            path[dir].push(i)
+            return dfs(board[i][edge] - 1, dir, type)
+          }
+        } else if (type === 6) {
+          console.log(board[i].zone)
+          if (board[i].zone === 3) {
+            console.log('IN THE ZONE')
+            path[dir].push(i)
+            return dfs(board[i][edge] - 1, dir, type)
+          }
+        } else if (type === 7) {
+          if (board[i].zone === 2) {
+            path[dir].push(i)
+            return dfs(board[i][edge] - 1, dir, type)
+          }
+        } else if (type === 8) {
+          if (board[i].zone === 2) {
+            path[dir].push(i)
+            return dfs(board[i][edge] - 1, dir, type)
+          }
         }
       }
     }
 
-    if (obj.occupied === 1 || obj.occupied === 3) {
+    if (obj.occupied === 1 || obj.occupied === 3 || obj.occupied === 5 || obj.occupied === 7) {
 
       dfs(obj.edgeN - 1, "N", obj.occupied)
       dfs(obj.edgeS - 1, "S", obj.occupied)
       dfs(obj.edgeE - 1, "E", obj.occupied)
       dfs(obj.edgeW - 1, "W", obj.occupied)
-    } else if (obj.occupied === 2 || obj.occupied === 4) {
+    } else if (obj.occupied === 2 || obj.occupied === 4 || obj.occupied === 6 || obj.occupied === 8) {
       dfs(obj.edgeN - 1, "N", obj.occupied)
       dfs(obj.edgeS - 1, "S", obj.occupied)
       dfs(obj.edgeE - 1, "E", obj.occupied)
@@ -72,19 +94,19 @@ const Board = () => {
       dfs(obj.edgeSW - 1, "SW", obj.occupied)
       dfs(obj.edgeSE - 1, "SE", obj.occupied)
     }
-
-    if (obj.occupied === 1 || obj.occupied === 3) {
+    console.log(path)
+    if (obj.occupied === 1 || obj.occupied === 3 || obj.occupied === 5 || obj.occupied === 7) {
       setBoard(board => {
         for (let key in path) {
             if (path[key].length > 0) {
-              console.log(path[key][path[key].length - 1])
+              // console.log(path[key][path[key].length - 1])
               board[path[key][path[key].length - 1]].highlight = true
             }
 
         }
         return board
       })
-    } else if (obj.occupied === 2 || obj.occupied === 4) {
+    } else if (obj.occupied === 2 || obj.occupied === 4 || obj.occupied === 6 || obj.occupied === 8) {
       setBoard(board => {
         for (let key in path) {
           for (let i = 0; i < path[key].length; i++) {
@@ -96,13 +118,13 @@ const Board = () => {
     }
 
 
-    if (obj.occupied === 1 || obj.occupied === 3) {
-      console.log(path)
+    if (obj.occupied === 1 || obj.occupied === 3 || obj.occupied === 5 || obj.occupied === 7) {
+      // console.log(path)
       for (let key in path) {
         setHighlighted(highlighted => [...highlighted, path[key].pop() + 1])
       }
-    } else if (obj.occupied === 2 || obj.occupied === 4) {
-      console.log(path)
+    } else if (obj.occupied === 2 || obj.occupied === 4 || obj.occupied === 6 || obj.occupied === 8) {
+      // console.log(path)
       for (let key in path) {
         for (let i = 0; i < path[key].length; i++) {
           setHighlighted(highlighted => [...highlighted, path[key][i] + 1])
@@ -116,11 +138,12 @@ const Board = () => {
   const movePiece = (obj) => {
     let i = board[obj.pos - 1]
     let type = currentPiece.occupied
+    console.log('TYPE', type, 'POS', obj.pos, currentPiece)
     if (currentPiece.pos) {
       setBoard(board => {
         board[currentPiece.pos - 1].occupied = null;
         board[obj.pos - 1].occupied = type
-        if (obj.zone !== 1) {
+        if (obj.zone !== 1 && type < 5) {
           board[obj.pos - 1].occupied = type + 4
         }
         return board

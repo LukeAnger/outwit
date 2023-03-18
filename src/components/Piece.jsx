@@ -8,8 +8,8 @@ const Piece = ( { obj, pathFinder, clearHighlights, changeCurrentPiece } ) => {
     setIsClicked(!isClicked)
     pathFinder(obj)
     changeCurrentPiece(obj)
-    // isClicked ? clearHighlights() : null
-
+    isClicked ? clearHighlights() : null
+    console.log(obj.occupied)
   }
 
   return (
