@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Piece from "./Piece.jsx";
 
-const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, changeCurrentPiece ,board, turn }) => {
+const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, currentPiece, changeCurrentPiece ,board, turn }) => {
   let name = "tile1";
   let test = false
 
@@ -39,6 +39,7 @@ const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, change
         obj={obj}
         turn={turn}
         pathFinder={pathFinder}
+        currentPiece={currentPiece}
         changeCurrentPiece={changeCurrentPiece}
         clearHighlights={clearHighlights} /> : null}
       </div>

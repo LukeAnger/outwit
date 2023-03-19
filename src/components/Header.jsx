@@ -3,7 +3,7 @@ import Info from './Info.jsx';
 
 const Header = () => {
 
-  const [info, setInfo] = useState(true);
+  const [info, setInfo] = useState(false);
 
 
   const handleInfo = () => {
@@ -16,7 +16,7 @@ const Header = () => {
         <div></div>
         <h1 id='header'>Outwit</h1>
         <div id='infoButton' onClick={handleInfo} >?</div>
-        {info ? <Info /> : null}
+        {info ? <Info handleInfo={handleInfo} /> : null}
       </div>
 
 

@@ -18,7 +18,7 @@ const Board = () => {
   }
 
   const changeCurrentPiece = (obj) => {
-    !currentPiece.pos ? setCurrentPiece(obj) : setCurrentPiece({})
+    setCurrentPiece(obj)
   }
 
 
@@ -161,6 +161,7 @@ const Board = () => {
           pathFinder={pathFinder}
           highlighted={highSet}
           movePiece={movePiece}
+          currentPiece={currentPiece}
           changeCurrentPiece={changeCurrentPiece}
           clearHighlights={clearHighlights} />
         ))}

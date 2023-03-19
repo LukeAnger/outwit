@@ -46,6 +46,7 @@ ol > li, ul > li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 h1 {
@@ -68,16 +69,21 @@ h1 {
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+#infoButton:hover {
+  box-shadow: 0 0 2px 2px rgb(85, 85, 85);
 }
 
 #info {
   position: absolute;
-  /* top: 50%; */
-  left: 50%;
+  top: 100%;
   width: max(50vw, 375px);
   border: 1px solid black;
-  transform: translate(-50%, 50%);
-  background-color: #ffffff;
+  border-radius: 0.5rem;
+  transform: translate(50%, 10%);
+  background-color: #ffffffea;
   z-index: 1;
 }
 
@@ -86,11 +92,25 @@ h1 {
   place-content: center;
 }
 
-ol h4 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
+#infoContainer > button {
+  position: absolute;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  right: 0%;
+  margin: 5px 5px 0 0;
+  transition: 0.5s ease;
+  cursor: pointer;
 }
+
+#infoContainer > button:hover {
+  box-shadow: 0 0 2px 2px rgb(85, 85, 85);
+}
+
+#infoContainer li {
+  text-indent: 0.5rem;
+}
+
 
 /* .testGrid > div {
   border: 1px solid black;
@@ -140,6 +160,12 @@ ol h4 {
   border-radius: 50%;
   border: 1px solid black;
   cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.piece:hover {
+  border-color: #58db74;
+  box-shadow: 0 0 0px 3px #58db74;
 }
 
 .piece1, .piece2, .piece5, .piece6 {
