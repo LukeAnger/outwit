@@ -2,11 +2,24 @@
   --color1: #ffffff;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'DM Mono', monospace;
 }
+
+ol {
+  list-style: inside decimal;
+}
+
+ol > li, ul > li {
+  margin: 0.5rem 0.75rem;
+}
+
+
 
 #app {
   width: 100vw;
@@ -16,11 +29,94 @@
   background-color: var(--color1);
 }
 
-.testGrid > div {
+#head {
+  position: absolute;
+  width: 100vw;
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.headerContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin: 1rem;
+}
+
+#infoButton {
+  display: grid;
+  place-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+#infoButton:hover {
+  box-shadow: 0 0 2px 2px rgb(85, 85, 85);
+}
+
+#info {
+  position: absolute;
+  top: 100%;
+  width: max(50vw, 375px);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  transform: translate(50%, 10%);
+  background-color: #ffffffea;
+  z-index: 1;
+}
+
+#infoContainer {
+  display: grid;
+  place-content: center;
+}
+
+#infoContainer > button {
+  position: absolute;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  right: 0%;
+  margin: 5px 5px 0 0;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+#infoContainer > button:hover {
+  box-shadow: 0 0 2px 2px rgb(85, 85, 85);
+}
+
+#infoContainer li {
+  text-indent: 0.5rem;
+}
+
+
+/* .testGrid > div {
   border: 1px solid black;
   width: 1.5rem;
   height: 1.5rem;
-}
+} */
 
 .board {
   display: grid;
@@ -64,6 +160,12 @@
   border-radius: 50%;
   border: 1px solid black;
   cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.piece:hover {
+  border-color: #58db74;
+  box-shadow: 0 0 0px 3px #58db74;
 }
 
 .piece1, .piece2, .piece5, .piece6 {
