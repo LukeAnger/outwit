@@ -78,18 +78,27 @@ h1 {
 
 #info {
   position: absolute;
-  top: 100%;
-  width: max(50vw, 375px);
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  transform: translate(50%, 10%);
-  background-color: #ffffffea;
-  z-index: 1;
+  top: 0;
+  width: 100vw;
+  height: 100svh;
+
+}
+
+.infoCenter {
+  display: grid;
+  place-content: center;
+  width: 100vw;
+  height: 100svh;
 }
 
 #infoContainer {
+  position: relative;
   display: grid;
   place-content: center;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  background-color: #ffffffea;
+  z-index: 1;
 }
 
 #infoContainer > button {
@@ -212,6 +221,10 @@ h1 {
     width: max(3.75vw, 39px);
     height: max(3.75vw, 39px);
   }
+
+  #infoContainer {
+    width: calc(9 * max(5vw, 52px));
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -228,6 +241,10 @@ h1 {
   .piece {
     width: max(5.1vw, 39px);
     height: max(5.1vw, 39px);
+  }
+
+  #infoContainer {
+    width: calc(9 * max(6.8vw, 52px));
   }
 }
 
@@ -246,10 +263,12 @@ h1 {
     width: 7.5vw;
     height: 7.5vw;
   }
+
+  #infoContainer {
+    width: calc(9 * 10vw);
+  }
 }
 
 @media screen and (max-width: 440px) {
-  #info {
-    transform: translate(5%, -10%);
-  }
+
 }

@@ -247,3 +247,9 @@ h1 {
     height: 7.5vw;
   }
 }
+
+@media screen and (max-width: 440px) {
+  #info {
+    transform: translate(5%, -10%);
+  }
+}
