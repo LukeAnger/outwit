@@ -2,11 +2,24 @@
   --color1: #ffffff;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'DM Mono', monospace;
 }
+
+ol {
+  list-style: inside decimal;
+}
+
+ol > li, ul > li {
+  margin: 0.5rem 0.75rem;
+}
+
+
 
 #app {
   width: 100vw;
@@ -16,11 +29,74 @@
   background-color: var(--color1);
 }
 
-.testGrid > div {
+#head {
+  position: absolute;
+  width: 100vw;
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.headerContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin: 1rem;
+}
+
+#infoButton {
+  display: grid;
+  place-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+#info {
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  width: max(50vw, 375px);
+  border: 1px solid black;
+  transform: translate(-50%, 50%);
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+#infoContainer {
+  display: grid;
+  place-content: center;
+}
+
+ol h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* .testGrid > div {
   border: 1px solid black;
   width: 1.5rem;
   height: 1.5rem;
-}
+} */
 
 .board {
   display: grid;

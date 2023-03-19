@@ -38,26 +38,22 @@ const Board = () => {
       if (i > 90 || i < 0) return
       let edge = "edge" + dir
       if (!board[i].occupied) {
-        if (type === 1 || type === 2) {
-          if (board[i].zone !== 2) {
+        if ((type === 1 || type === 2) && board[i].zone !== 2) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 3 || type === 4) {
-          if (board[i].zone !== 3) {
+
+        } else if ((type === 3 || type === 4) && board[i].zone !== 3) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 5 || type === 6) {
-          if (board[i].zone === 3) {
+
+        } else if ((type === 5 || type === 6) && board[i].zone === 3) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
-          }
-        } else if (type === 7 || type === 8) {
-          if (board[i].zone === 2) {
+
+        } else if ((type === 7 || type === 8) && board[i].zone === 2) {
             path[dir].push(i)
             return dfs(board[i][edge] - 1, dir, type)
-          }
+
         }
       }
     }
