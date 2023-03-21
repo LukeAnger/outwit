@@ -125,9 +125,9 @@ const Board = () => {
       board[currentPiece.pos - 1].occupied = null;
       board[obj.pos - 1].occupied = type
       if (obj.zone !== 1 && type < 5) {
-        if (obj.zone === 2) {
+        if (obj.zone === 3) {
           setScore(score => ({...score, player1: score.player1 + 1}))
-        } else if (obj.zone === 3) {
+        } else if (obj.zone === 2) {
           setScore(score => ({...score, player2: score.player2 + 1}))
         }
         board[obj.pos - 1].occupied = type + 4
@@ -150,7 +150,26 @@ const Board = () => {
 
   let highSet = new Set(highlighted)
   return (
-    <section id='board'>
+    <section id='game'>
+      <div className="score">
+        <div className="player">
+          <div className='playerScore'>
+            <h2>Player 1</h2>
+            <h3>{score.player1}</h3>
+          </div>
+          { turn % 2 !==0 ? <div className='piece piece1'></div> : null}
+
+        </div>
+        <div className="player">
+          { turn % 2 === 0 ? <div className='piece piece3'></div> : null }
+          <div className='playerScore'>
+            <h2>Player 2</h2>
+            <h3>{score.player2}</h3>
+          </div>
+
+        </div>
+      </div>
+
       <div className="board">
         {board.map((obj) => (
           <Tile

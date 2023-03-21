@@ -7,7 +7,7 @@ const Info = ({handleInfo}) => {
       <div className='infoCenter'>
         <div id='infoContainer'>
           <button onClick={handleInfo}>X</button>
-          <h1>Outwit Rules</h1>
+          <h1>How to Play</h1>
           <ol>
             <li>The first player is assigned randomly.</li>
             <li>A player may move only one chip on a single turn.</li>

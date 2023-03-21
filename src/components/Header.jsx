@@ -3,8 +3,7 @@ import Info from './Info.jsx';
 
 const Header = () => {
 
-  const [info, setInfo] = useState(false);
-
+  const [info, setInfo] = useState(true);
 
   const handleInfo = () => {
     setInfo(!info);
