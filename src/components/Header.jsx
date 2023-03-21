@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Info from './Info.jsx';
 
-const Header = ({handleInfo}) => {
+export const Header = ({handleInfo}) => {
 
 
 
@@ -17,5 +17,3 @@ const Header = ({handleInfo}) => {
     </header>
   );
 }
-
-export default Header;

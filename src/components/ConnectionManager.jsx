@@ -1,7 +1,7 @@
 import React from 'react';
 import { socket } from '../socket';
 
-const ConnectionManager = () => {
+export const ConnectionManager = () => {
   function connect() {
     socket.connect();
   }
@@ -17,5 +17,3 @@ const ConnectionManager = () => {
     </>
   );
 }
-
-export default ConnectionManager;

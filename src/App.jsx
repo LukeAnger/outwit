@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { socket } from './socket'
-import ConnectionManager from './components/ConnectionManager.jsx'
-import ConnectionState from './components/ConnectionState.jsx'
-import Events from './components/Events.jsx'
-import Board from './components/Board.jsx'
-import Header from './components/Header.jsx'
-import Info from './components/Info.jsx'
+import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from './components'
 
 const App = () => {
 

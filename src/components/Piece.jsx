@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Piece = ( { obj, pathFinder, clearHighlights, currentPiece, changeCurrentPiece, turn } ) => {
+export const Piece = ( { obj, pathFinder, clearHighlights, currentPiece, changeCurrentPiece, turn } ) => {
 
   let type = obj.occupied
 
