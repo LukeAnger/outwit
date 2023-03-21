@@ -2,7 +2,11 @@ const http = require("http");
 const socketio = require("socket.io");
 
 const server = http.createServer();
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+  }
+});
 
 io.on("connection", (socket) => {
   console.log("New client connected");
