@@ -95,6 +95,7 @@ h1 {
   position: relative;
   display: grid;
   place-content: center;
+  width: max(50vw, 500px);
   border: 1px solid black;
   border-radius: 0.5rem;
   background-color: #ffffffea;
@@ -126,6 +127,24 @@ h1 {
   width: 1.5rem;
   height: 1.5rem;
 } */
+
+
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+
+}
+
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem
+}
 
 .board {
   display: grid;
@@ -206,6 +225,12 @@ h1 {
   transform: translate(50%, 50%);
 }
 
+@media screen and (min-width: 1200px) {
+  #game {
+    transform: translate(0px, 5%);
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .board {
     grid-template-columns: repeat(9, max(5vw, 52px));
@@ -270,5 +295,9 @@ h1 {
 }
 
 @media screen and (max-width: 440px) {
-
+  #infoContainer {
+    width: calc(9 * 10vw);
+    height: 90svh;
+    top: -1%
+  }
 }

@@ -95,7 +95,7 @@ h1 {
   position: relative;
   display: grid;
   place-content: center;
-  width: max(50vw, 500px);
+  width: min(50vw, 600px);
   border: 1px solid black;
   border-radius: 0.5rem;
   background-color: #ffffffea;
@@ -297,7 +297,6 @@ h1 {
 @media screen and (max-width: 440px) {
   #infoContainer {
     width: calc(9 * 10vw);
-    height: 90svh;
-    top: -1%
+    top: 5%
   }
 }
