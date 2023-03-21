@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Info = ({handleInfo}) => {
+const Info = ({handleInfo, info}) => {
+
+
+
 
   return (
     <div id='info'>

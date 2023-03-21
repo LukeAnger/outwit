@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import Info from './Info.jsx';
 
-const Header = () => {
+const Header = ({handleInfo}) => {
 
-  const [info, setInfo] = useState(true);
 
-  const handleInfo = () => {
-    setInfo(!info);
-  };
 
   return (
     <header id='head'>
@@ -15,7 +11,6 @@ const Header = () => {
         <div></div>
         <h1 id='header'>Outwit</h1>
         <div id='infoButton' onClick={handleInfo} >?</div>
-        {info ? <Info handleInfo={handleInfo} /> : null}
       </div>
 
 
