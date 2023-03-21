@@ -296,6 +296,6 @@ h1 {
 @media screen and (max-width: 440px) {
   #infoContainer {
     width: calc(9 * 10vw);
-    top: 5%
+    top: 20%
   }
 }
