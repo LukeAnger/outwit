@@ -3,7 +3,7 @@ import Tile from './Tile.jsx'
 import { boardGen } from '../utils/boardGen.js'
 const boardInit = boardGen()
 
-const Board = () => {
+export const Board = () => {
 
   const [board, setBoard] = useState(boardInit)
   const [highlighted, setHighlighted] = useState([])

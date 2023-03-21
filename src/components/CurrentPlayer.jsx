@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CurrentPlayer = ({ turn }) => {
+export const CurrentPlayer = ({ turn }) => {
   const player = turn % 2 === 0 ? 'Player 1' : 'Player 2';
   return (
     <div id='currentPlayer'>
@@ -9,5 +9,3 @@ const CurrentPlayer = ({ turn }) => {
     </div>
   );
 }
-
-export default CurrentPlayer;
