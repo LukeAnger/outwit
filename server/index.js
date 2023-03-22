@@ -30,7 +30,6 @@ io.on("connection", (socket) => {
   console.log("New client connected");
 
   socket.on("gameEvent", (board) => {
-    console.log('working');
     io.emit("gameEvent", board); // broadcast message to all connected clients
   });
 
