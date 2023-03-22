@@ -46,5 +46,5 @@ server.listen(3001, () => {
 // ------------------- EXPRESS MIDDLEWARE -------------------------- //
 
 app.get("/", (req, res) => {
-  console.log('hello world')
+  res.send("Hello World!");
 })
