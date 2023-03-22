@@ -5,9 +5,6 @@ import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from 
 import { boardGen } from './utils/boardGen.js'
 const boardInit = boardGen()
 
-const OAUTH_CLIENT_ID = '245068856655-dsmkajdth844qt1v62o909lom3gcgrvl.apps.googleusercontent.com'
-
-console.log('hello')
 const App = () => {
 
   const [board, setBoard] = useState(boardInit)
