@@ -3,9 +3,6 @@ import { socket } from './socket'
 import { LoginButton, LogoutButton, Profile } from './auth'
 import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from './components'
 
-const OAUTH_CLIENT_ID = '245068856655-dsmkajdth844qt1v62o909lom3gcgrvl.apps.googleusercontent.com'
-
-console.log('hello')
 const App = () => {
 
   const [info, setInfo] = useState(true);
