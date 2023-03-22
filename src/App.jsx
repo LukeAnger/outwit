@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { socket } from './socket'
 import { LoginButton, LogoutButton, Profile } from './auth'
 import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from './components'
+import { boardGen } from './utils/boardGen.js'
+const boardInit = boardGen()
 
 const App = () => {
 
+  const [board, setBoard] = useState(boardInit)
   const [info, setInfo] = useState(true);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [gameEvent, setGameEvent] = useState([]);
@@ -20,9 +23,8 @@ const App = () => {
       console.log('Disconnected!');
     }
 
-    function onGameEvent(event) {
-      setGameEvent(previous => [...previous, event]);
-      console.log(event);
+    function onGameEvent(newBoard) {
+      setBoard(newBoard)
     }
 
     socket.on('connect', onConnect);
@@ -48,9 +50,8 @@ const App = () => {
       <Profile />
       {info ? <Info handleInfo={handleInfo} info={info} /> : null}
       <ConnectionState isConnected={isConnected}/>
-      <Events events={gameEvent} />
       <ConnectionManager/>
-      <Board />
+      <Board board={board} setBoard={setBoard}/>
     </section>
   )
 }
