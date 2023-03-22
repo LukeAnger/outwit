@@ -21,6 +21,7 @@ const App = () => {
 
     function onGameEvent(event) {
       setGameEvent(previous => [...previous, event]);
+      console.log(event);
     }
 
     socket.on('connect', onConnect);
