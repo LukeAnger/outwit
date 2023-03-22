@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { socket } from './socket'
+import { LoginButton, LogoutButton, Profile } from './auth'
 import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from './components'
 import { boardGen } from './utils/boardGen.js'
 const boardInit = boardGen()
 
+const OAUTH_CLIENT_ID = '245068856655-dsmkajdth844qt1v62o909lom3gcgrvl.apps.googleusercontent.com'
+
+console.log('hello')
 const App = () => {
 
   const [board, setBoard] = useState(boardInit)
@@ -44,6 +48,9 @@ const App = () => {
   return (
     <section id='app'>
       <Header handleInfo={handleInfo} />
+      <LoginButton />
+      <LogoutButton />
+      <Profile />
       {info ? <Info handleInfo={handleInfo} info={info} /> : null}
       <ConnectionState isConnected={isConnected}/>
       <ConnectionManager/>
