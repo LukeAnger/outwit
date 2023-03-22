@@ -48,3 +48,7 @@ server.listen(3001, () => {
 app.get("/", (req, res) => {
   res.send("Hello World!");
 })
+
+app.listen(3002, () => {
+  console.log("Server listening on port 3002");
+})
