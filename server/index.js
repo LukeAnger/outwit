@@ -29,9 +29,9 @@ const io = socketio(server, {
 io.on("connection", (socket) => {
   console.log("New client connected");
 
-  socket.on("message", (message) => {
-    console.log(`Received message: ${message}`);
-    io.emit("message", message); // broadcast message to all connected clients
+  socket.on("gameEvent", (board) => {
+    console.log('working');
+    io.emit("gameEvent", board); // broadcast message to all connected clients
   });
 
   socket.on("disconnect", () => {

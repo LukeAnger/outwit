@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { socket } from '../socket'
 export const Piece = ( { obj, pathFinder, clearHighlights, currentPiece, changeCurrentPiece, turn } ) => {
 
   let type = obj.occupied
