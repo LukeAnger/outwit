@@ -29,6 +29,29 @@ ol > li, ul > li {
   background-color: var(--color1);
 }
 
+#loginButton {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  padding: 0 0.5rem;
+  border: 1px solid black;
+  background: linear-gradient(to left, var(--color1) 50%, rgb(122, 195, 255) 50%) right;
+  background-size: 200% 100%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px darkslategrey;
+  cursor: pointer;
+  transition: 0.5s linear;
+}
+
+#loginButton:hover {
+  background-position: left;
+
+}
+
+
+
+
+
+
 #head {
   position: absolute;
   width: 100vw;

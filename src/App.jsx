@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { socket } from './socket'
-import { LoginButton, LogoutButton, Profile } from './auth'
 import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from './components'
 import { boardGen } from './utils/boardGen.js'
 const boardInit = boardGen()
@@ -11,6 +10,7 @@ const App = () => {
   const [info, setInfo] = useState(true);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [gameEvent, setGameEvent] = useState([]);
+  const [showSocketTools, setShowSocketTools] = useState(false); // ctrl + alt + click to show
 
   useEffect(() => {
     function onConnect() {
@@ -42,15 +42,20 @@ const App = () => {
     setInfo(!info);
   };
 
+  const handleShowSocketTools = (e) => {
+    e.stopPropagation();
+    if (e.ctrlKey && e.altKey) { setShowSocketTools(!showSocketTools) }
+  }
   return (
-    <section id='app'>
+    <section id='app' onClick={handleShowSocketTools}>
       <Header handleInfo={handleInfo} />
-      <LoginButton />
-      <LogoutButton />
-      <Profile />
-      {info ? <Info handleInfo={handleInfo} info={info} /> : null}
-      <ConnectionState isConnected={isConnected}/>
-      <ConnectionManager/>
+      {!info ? <Info handleInfo={handleInfo} info={info} /> : null}
+      { showSocketTools ? <div style={{position: 'absolute', top: '11%', left: '5%'}}>
+        <ConnectionState isConnected={isConnected}/>
+        <ConnectionManager/>
+      </div> :
+      null}
+
       <Board board={board} setBoard={setBoard}/>
     </section>
   )
