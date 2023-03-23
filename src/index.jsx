@@ -1,7 +1,18 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App.jsx";
+import { Auth0Provider } from "@auth0/auth0-react";
+import { auth } from "./utils/config.js"
 
-const root = createRoot(document.getElementById("root"))
-
-root.render(<App />)
+ReactDOM.render(
+  <Auth0Provider
+    domain={auth.AUTH0_DOMAIN}
+    clientId={auth.AUTH0_CLIENT_ID}
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+    <App />
+  </Auth0Provider>,
+  document.getElementById("root")
+);

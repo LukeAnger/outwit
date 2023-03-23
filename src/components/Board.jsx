@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import Tile from './Tile.jsx'
-import { boardGen } from '../utils/boardGen.js'
-const boardInit = boardGen()
+import { socket } from '../socket'
 
-const Board = () => {
+export const Board = ({ board, setBoard }) => {
 
-  const [board, setBoard] = useState(boardInit)
   const [highlighted, setHighlighted] = useState([])
   const [currentPiece, setCurrentPiece] = useState({})
   const [isClicked, setIsClicked] = useState(false)
@@ -132,6 +130,8 @@ const Board = () => {
         }
         board[obj.pos - 1].occupied = type + 4
       }
+      socket.emit('gameEvent', board)
+
       return board
     })
 
@@ -149,6 +149,7 @@ const Board = () => {
 
 
   let highSet = new Set(highlighted)
+
   return (
     <section id='game'>
       <div className="score">
