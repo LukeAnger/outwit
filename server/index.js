@@ -22,7 +22,8 @@ db.once("open", () => {
 // ------------------- CONNECT TO SOCKET.IO SERVER -------------------------- //
 const io = socketio(server, {
   cors: {
-    origin: ['https://lukeanger.com/outwit', 'http://localhost:3000'],
+    origin: ['https://lukeanger.com/outwit', 'http://localhost:3000', 'https://lukeanger.com'],
+    methods: ["GET", "POST"],
   }
 });
 
