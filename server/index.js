@@ -22,7 +22,7 @@ db.once("open", () => {
 // ------------------- CONNECT TO SOCKET.IO SERVER -------------------------- //
 const io = socketio(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: process.env.NODE_ENV === "production" ? "http://lukeanger.com" : "http://localhost:3000",
   }
 });
 
