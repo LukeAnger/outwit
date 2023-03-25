@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Piece from "./Piece.jsx";
+import { Piece } from '@/components'
 
 export const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, currentPiece, changeCurrentPiece ,board, turn }) => {
   let name = "tile1";

@@ -1,6 +1,4 @@
-import React from 'react';
-
-export const Events = ({ events }) => {
+export const Events = ({ events }: { events: Array<string> }) => {
   return (
     <ul>
     {

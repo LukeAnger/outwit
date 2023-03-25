@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
 
 export const Info = ({handleInfo, info}) => {
-
-
-
 
   return (
     <div id='info'>
@@ -42,3 +38,5 @@ export const Info = ({handleInfo, info}) => {
     </div>
   );
 }
+
+export default Info

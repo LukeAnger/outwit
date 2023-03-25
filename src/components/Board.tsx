@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Tile from './Tile.jsx'
-import { socket } from '../socket'
+import Tile from './Tile'
+import { socket } from '@/utils/socket'
 
 export const Board = ({ board, setBoard }) => {
 

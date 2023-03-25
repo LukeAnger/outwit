@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useUser } from '@auth0/nextjs-auth0/client';
 import { LoginButton, LogoutButton, Profile } from '../auth'
-import Info from './Info.jsx';
 
 export const Header = ({handleInfo}) => {
 
-  const { isAuthenticated } = useAuth0();
-  console.log('AUTH OBJECT: ', useAuth0())
-  if (isAuthenticated) {
+  const { user, error, isLoading } = useUser();
+  console.log('AUTH OBJECT: ', useUser())
+  if (user) {
     return (
       <header id='head'>
         <div className='headerContainer'>

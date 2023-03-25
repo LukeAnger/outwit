@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { socket } from './socket'
-import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from './components'
-import { boardGen } from './utils/boardGen.js'
+import { socket } from '@/utils/socket'
+import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from '@/components'
+import { boardGen } from '@/utils/boardGen'
 const boardInit = boardGen()
 
 const App = () => {
