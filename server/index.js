@@ -41,13 +41,3 @@ io.on("connection", (socket) => {
 server.listen(3001, () => {
   console.log("Socket.io server listening on port 3001");
 });
-
-// ------------------- EXPRESS MIDDLEWARE -------------------------- //
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-})
-
-app.listen(3002, () => {
-  console.log("Server listening on port 3002");
-})
