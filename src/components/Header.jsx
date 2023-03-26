@@ -6,7 +6,6 @@ import Info from './Info.jsx';
 export const Header = ({handleInfo}) => {
 
   const { isAuthenticated } = useAuth0();
-  console.log('AUTH OBJECT: ', useAuth0())
   if (isAuthenticated) {
     return (
       <header id='head'>
