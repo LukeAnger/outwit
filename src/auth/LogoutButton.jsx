@@ -7,7 +7,7 @@ export const LogoutButton = () => {
   return (
     <button
     id='logoutButton'
-    onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+    onClick={() => logout({ logoutParams: { returnTo: 'https://lukeanger.com/outwit' } })}>
       Log Out
     </button>
   );
