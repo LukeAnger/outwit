@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/outwit/static/js/main.bfff9216.js",
+    "main.js": "/outwit/static/js/main.26ff16b7.js",
     "index.html": "/outwit/index.html",
-    "main.bfff9216.js.map": "/outwit/static/js/main.bfff9216.js.map"
+    "main.26ff16b7.js.map": "/outwit/static/js/main.26ff16b7.js.map"
   },
   "entrypoints": [
-    "static/js/main.bfff9216.js"
+    "static/js/main.26ff16b7.js"
   ]
 }
