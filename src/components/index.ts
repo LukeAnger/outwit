@@ -1,6 +1,4 @@
 export * from './Board'
-export * from './ConnectionManager'
-export * from './ConnectionState'
 export * from './Header'
 export * from './Info'
 export * from './Piece'
