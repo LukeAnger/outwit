@@ -10,8 +10,6 @@ const App = () => {
   const [board, setBoard] = useState(boardInit)
   const [info, setInfo] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
-  const [gameEvent, setGameEvent] = useState([]);
-  const [showSocketTools, setShowSocketTools] = useState(false); // ctrl + alt + click to show
 
   useEffect(() => { socketInitializer() }, [])
 
@@ -42,13 +40,8 @@ const App = () => {
     setInfo(!info);
   };
 
-  const handleShowSocketTools = (e) => {
-    e.stopPropagation();
-    if (e.ctrlKey && e.altKey) { setShowSocketTools(!showSocketTools) }
-  }
-
   return (
-    <section id='app' onClick={handleShowSocketTools}>
+    <section id='app' >
       <Header handleInfo={handleInfo} />
       {!info ? <Info handleInfo={handleInfo} info={info} /> : null}
 
