@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import Tile from './Tile'
 
-export const Board = ({ board, setBoard, boardChangeHandler }) => {
+interface boardProps {
+  board: boardObj[]
+  setBoard: React.Dispatch<React.SetStateAction<boardObj[]>>
+  boardChangeHandler: (board: boardObj[]) => void
+}
+
+export const Board = ({ board, setBoard, boardChangeHandler }: boardProps) => {
 
   const [highlighted, setHighlighted] = useState([])
   const [currentPiece, setCurrentPiece] = useState({})
@@ -14,24 +20,24 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
     score.player1 === 9 ? alert('Player 1 Wins!') : alert('Player 2 Wins!')
   }
 
-  const changeCurrentPiece = (obj) => {
+  const changeCurrentPiece = (obj: boardObj) => {
     setCurrentPiece(obj)
   }
 
 
-  const pathFinder = (obj) => {
-    const path = {
-      N: [],
-      S: [],
-      E: [],
-      W: [],
-      NW: [],
-      NE: [],
-      SW: [],
-      SE: []
+  const pathFinder = (obj: gameObj) => {
+    const path: pathObj = {
+      "N": [],
+      "S": [],
+      "E": [],
+      "W": [],
+      "NW": [],
+      "NE": [],
+      "SW": [],
+      "SE": []
     }
 
-    const dfs = (i, dir, type) => {
+    const dfs = (i: number, dir: string, type: number): undefined => {
       if (i > 90 || i < 0) return
       let edge = "edge" + dir
       if (!board[i].occupied) {
@@ -85,6 +91,7 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
       setBoard(board => {
         for (let key in path) {
           for (let i = 0; i < path[key].length; i++) {
+            console.log(board[path[key][i]])
             board[path[key][i]].highlight = true
           }
         }
@@ -108,7 +115,7 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
 
   }
 
-  const movePiece = (obj) => {
+  const movePiece = (obj: boardObj) => {
     // turn handling is also handled in Piece.jsx in handleClick function
     if (!currentPiece.pos) return // check if there is a piece selected
 
@@ -175,7 +182,6 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
           <Tile
           obj={obj}
           key={obj.pos}
-          board={board}
           turn={turn}
           pathFinder={pathFinder}
           highlighted={highSet}
