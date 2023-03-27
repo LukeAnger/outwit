@@ -1,4 +1,4 @@
-import dbConnect from "@/utils/dbConnect";
+import { dbConnect } from "@/utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function mongoConnection(req: NextApiRequest, res: NextApiResponse) {

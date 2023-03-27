@@ -1,28 +1,26 @@
 import mongoose from "mongoose";
 
-const mongo_url = process.env.MONGODB_URL;
-
-if (!mongo_url) {
-  throw new Error("Please define the MONGODB_URL environment variable");
-}
-
 let cached = global.mongoose
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null }
+  cached = global.mongoose = { connection: null, promise: null }
 }
 
 export const dbConnect = async () => {
+
   if (cached.connection) {
+    console.log('Already connected to MongoDB')
     return cached.connection
   }
 
   if (!cached.promise) {
     const opts = {
-      bufferCommands: false,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     }
 
-    cached.promise = mongoose.connect(mongo_url, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(process.env.MONGODB_URL, opts).then((mongoose) => {
+      console.log('Connecting to MongoDB')
       return mongoose
     })
   }
@@ -36,3 +34,4 @@ export const dbConnect = async () => {
 
   return cached.connection
 }
+
