@@ -1,42 +1,42 @@
 import React, { useState, useEffect } from 'react'
-import { socket } from '@/utils/socket'
-import { ConnectionManager, ConnectionState, Events, Header, Info, Board } from '@/components'
+import { Header, Info, Board } from '@/components'
 import { boardGen } from '@/utils/boardGen'
-const boardInit = boardGen()
+import io from 'socket.io-client'
 
+let socket;
+const boardInit = boardGen()
 const App = () => {
 
   const [board, setBoard] = useState(boardInit)
   const [info, setInfo] = useState(true);
-  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [isConnected, setIsConnected] = useState(false);
   const [gameEvent, setGameEvent] = useState([]);
   const [showSocketTools, setShowSocketTools] = useState(false); // ctrl + alt + click to show
 
-  useEffect(() => {
-    function onConnect() {
-      setIsConnected(true);
-      console.log('Connected!');
-    }
+  useEffect(() => { socketInitializer() }, [])
 
-    function onDisconnect() {
-      setIsConnected(false);
-      console.log('Disconnected!');
-    }
+  const socketInitializer = async () => {
+    await fetch('/api/socket')
+    socket = io()
 
-    function onGameEvent(newBoard) {
-      setBoard(newBoard)
-    }
+    socket.on('connect', () => {
+      setIsConnected(true)
+      console.log('Client Connected to Socket')
+    })
 
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-    socket.on('gameEvent', onGameEvent);
+    socket.on('disconnect', () => {
+      setIsConnected(false)
+      console.log('Client Disconnected from Socket')
+    })
 
-    return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
-      socket.off('gameEvent', onGameEvent);
-    }
-  }, [])
+    socket.on('gameEvent', (data) => {
+      setBoard(data)
+    })
+  }
+
+  const boardChangeHandler = (board) => {
+    socket.emit('gameEvent', board)
+  }
 
   const handleInfo = () => {
     setInfo(!info);
@@ -46,17 +46,13 @@ const App = () => {
     e.stopPropagation();
     if (e.ctrlKey && e.altKey) { setShowSocketTools(!showSocketTools) }
   }
+
   return (
     <section id='app' onClick={handleShowSocketTools}>
       <Header handleInfo={handleInfo} />
       {!info ? <Info handleInfo={handleInfo} info={info} /> : null}
-      { showSocketTools ? <div style={{position: 'absolute', top: '11%', left: '5%'}}>
-        <ConnectionState isConnected={isConnected}/>
-        <ConnectionManager/>
-      </div> :
-      null}
 
-      <Board board={board} setBoard={setBoard}/>
+      <Board board={board} setBoard={setBoard} boardChangeHandler={boardChangeHandler}/>
     </section>
   )
 }

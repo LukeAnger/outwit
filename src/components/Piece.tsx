@@ -1,5 +1,3 @@
-import { socket } from '@/utils/socket'
-
 export const Piece = ( { obj, pathFinder, clearHighlights, currentPiece, changeCurrentPiece, turn } ) => {
 
   let type = obj.occupied

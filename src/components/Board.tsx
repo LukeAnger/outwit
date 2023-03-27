@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Tile from './Tile'
-import { socket } from '@/utils/socket'
 
-export const Board = ({ board, setBoard }) => {
+export const Board = ({ board, setBoard, boardChangeHandler }) => {
 
   const [highlighted, setHighlighted] = useState([])
   const [currentPiece, setCurrentPiece] = useState({})
@@ -130,7 +129,7 @@ export const Board = ({ board, setBoard }) => {
         }
         board[obj.pos - 1].occupied = type + 4
       }
-      socket.emit('gameEvent', board)
+      boardChangeHandler(board)
 
       return board
     })
