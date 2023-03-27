@@ -2,7 +2,7 @@ export const boardGen = () => {
   let board = [];
 
   for (let i = 1; i <= 90; i++) {
-    let obj: boardObj  = {
+    let obj: boardObj = {
       pos: i,
       zone: 1,
       highlight: false,
@@ -15,7 +15,6 @@ export const boardGen = () => {
       edgeNE: null,
       edgeSE: null,
       edgeSW: null,
-
     };
 
     if (

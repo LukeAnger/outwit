@@ -37,7 +37,7 @@ const App = () => {
 
   }
 
-  const boardChangeHandler = (board: boardObj) => {
+  const boardChangeHandler = (board: boardObj[]) => {
     socket.emit('gameEvent', board)
   }
 

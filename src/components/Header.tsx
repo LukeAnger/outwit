@@ -1,7 +1,7 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { LoginButton, LogoutButton, Profile } from '../auth'
 
-export const Header = ({handleInfo}) => {
+export const Header = ({handleInfo}: { handleInfo: () => void }) => {
 
   const { user, error, isLoading } = useUser();
   console.log('AUTH OBJECT: ', useUser())

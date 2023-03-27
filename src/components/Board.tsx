@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Tile from './Tile'
 
-type boardProps = {
-  board: gameObj[]
-  setBoard: React.Dispatch<React.SetStateAction<Array<object>>>
-  boardChangeHandler: React.Dispatch<React.SetStateAction<Array<object>>>
+interface boardProps {
+  board: boardObj[]
+  setBoard: React.Dispatch<React.SetStateAction<boardObj[]>>
+  boardChangeHandler: (board: boardObj[]) => void
 }
 
 export const Board = ({ board, setBoard, boardChangeHandler }: boardProps) => {
@@ -27,14 +27,14 @@ export const Board = ({ board, setBoard, boardChangeHandler }: boardProps) => {
 
   const pathFinder = (obj: gameObj) => {
     const path: pathObj = {
-      N: [],
-      S: [],
-      E: [],
-      W: [],
-      NW: [],
-      NE: [],
-      SW: [],
-      SE: []
+      "N": [],
+      "S": [],
+      "E": [],
+      "W": [],
+      "NW": [],
+      "NE": [],
+      "SW": [],
+      "SE": []
     }
 
     const dfs = (i: number, dir: string, type: number): undefined => {
@@ -91,6 +91,7 @@ export const Board = ({ board, setBoard, boardChangeHandler }: boardProps) => {
       setBoard(board => {
         for (let key in path) {
           for (let i = 0; i < path[key].length; i++) {
+            console.log(board[path[key][i]])
             board[path[key][i]].highlight = true
           }
         }
