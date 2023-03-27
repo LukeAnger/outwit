@@ -9,7 +9,7 @@ const boardInit = boardGen()
 
 const App = () => {
 
-  const [board, setBoard] = useState(boardInit)
+  const [board, setBoard] = useState<boardObj[]>(boardInit)
   const [info, setInfo] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
 
@@ -37,7 +37,7 @@ const App = () => {
 
   }
 
-  const boardChangeHandler = (board: any) => {
+  const boardChangeHandler = (board: boardObj) => {
     socket.emit('gameEvent', board)
   }
 
@@ -49,7 +49,6 @@ const App = () => {
     <section id='app' >
       <Header handleInfo={handleInfo} />
       {!info ? <Info handleInfo={handleInfo} info={info} /> : null}
-
       <Board board={board} setBoard={setBoard} boardChangeHandler={boardChangeHandler}/>
     </section>
   )

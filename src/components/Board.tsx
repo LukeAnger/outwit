@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import Tile from './Tile'
 
-export const Board = ({ board, setBoard, boardChangeHandler }) => {
+type boardProps = {
+  board: gameObj[]
+  setBoard: React.Dispatch<React.SetStateAction<Array<object>>>
+  boardChangeHandler: React.Dispatch<React.SetStateAction<Array<object>>>
+}
+
+export const Board = ({ board, setBoard, boardChangeHandler }: boardProps) => {
 
   const [highlighted, setHighlighted] = useState([])
   const [currentPiece, setCurrentPiece] = useState({})
@@ -14,13 +20,13 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
     score.player1 === 9 ? alert('Player 1 Wins!') : alert('Player 2 Wins!')
   }
 
-  const changeCurrentPiece = (obj) => {
+  const changeCurrentPiece = (obj: boardObj) => {
     setCurrentPiece(obj)
   }
 
 
-  const pathFinder = (obj) => {
-    const path = {
+  const pathFinder = (obj: gameObj) => {
+    const path: pathObj = {
       N: [],
       S: [],
       E: [],
@@ -31,7 +37,7 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
       SE: []
     }
 
-    const dfs = (i, dir, type) => {
+    const dfs = (i: number, dir: string, type: number): undefined => {
       if (i > 90 || i < 0) return
       let edge = "edge" + dir
       if (!board[i].occupied) {
@@ -108,7 +114,7 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
 
   }
 
-  const movePiece = (obj) => {
+  const movePiece = (obj: boardObj) => {
     // turn handling is also handled in Piece.jsx in handleClick function
     if (!currentPiece.pos) return // check if there is a piece selected
 
@@ -175,7 +181,6 @@ export const Board = ({ board, setBoard, boardChangeHandler }) => {
           <Tile
           obj={obj}
           key={obj.pos}
-          board={board}
           turn={turn}
           pathFinder={pathFinder}
           highlighted={highSet}

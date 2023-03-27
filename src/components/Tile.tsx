@@ -1,6 +1,6 @@
 import { Piece } from '@/components'
 
-export const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, currentPiece, changeCurrentPiece ,board, turn }) => {
+export const Tile = ({ obj, pathFinder, highlighted, clearHighlights, movePiece, currentPiece, changeCurrentPiece ,turn }) => {
   let name = "tile1";
   let test = false
 
