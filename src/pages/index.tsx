@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Header, Info, Board } from '@/components'
-import { boardGen } from '@/utils/boardGen'
-import io from 'socket.io-client'
+import { dbConnect, boardGen } from '@/utils'
+import { DefaultEventsMap } from '@socket.io/component-emitter';
+import io, { Socket } from 'socket.io-client'
 
-let socket;
+let socket: Socket<DefaultEventsMap>;
 const boardInit = boardGen()
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
   useEffect(() => { socketInitializer() }, [])
 
   const socketInitializer = async () => {
+    await dbConnect()
     await fetch('/api/socket')
     socket = io()
 
@@ -32,7 +34,7 @@ const App = () => {
     })
   }
 
-  const boardChangeHandler = (board) => {
+  const boardChangeHandler = (board: any) => {
     socket.emit('gameEvent', board)
   }
 
