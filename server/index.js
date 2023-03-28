@@ -8,16 +8,16 @@ const app = express()
 const server = http.createServer();
 
 // ------------------- CONNECT TO DATABASE -------------------------- //
-mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+// mongoose.connect(process.env.MONGODB_URL, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// })
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-})
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", () => {
+//   console.log("Connected to MongoDB");
+// })
 
 // ------------------- CONNECT TO SOCKET.IO SERVER -------------------------- //
 const io = socketio(server, {
@@ -45,10 +45,10 @@ server.listen(3001, () => {
 
 // ------------------- EXPRESS MIDDLEWARE -------------------------- //
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-})
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// })
 
-app.listen(3002, () => {
-  console.log("Server listening on port 3002");
-})
+// app.listen(3001, () => {
+//   console.log("Server listening on port 3001");
+// })
