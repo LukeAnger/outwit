@@ -22,7 +22,7 @@ const server = http.createServer();
 // ------------------- CONNECT TO SOCKET.IO SERVER -------------------------- //
 const io = socketio(server, {
   cors: {
-    origin: ['https://lukeanger.com/outwit', 'http://localhost:3000', 'https://lukeanger.com'],
+    origin: ['https://lukeanger.com/outwit', 'http://localhost:3000', 'https://lukeanger.com', 'http://2607:fb90:18d7:201b:8824:576:b0cc:b271:3000'],
     methods: ["GET", "POST"],
   }
 });
