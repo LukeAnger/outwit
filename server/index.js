@@ -7,22 +7,12 @@ const mongoose = require("mongoose");
 const app = express()
 const server = http.createServer();
 
-// ------------------- CONNECT TO DATABASE -------------------------- //
-// mongoose.connect(process.env.MONGODB_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
 
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", () => {
-//   console.log("Connected to MongoDB");
-// })
 
 // ------------------- CONNECT TO SOCKET.IO SERVER -------------------------- //
 const io = socketio(server, {
   cors: {
-    origin: ['https://lukeanger.com/outwit', 'http://localhost:3000', 'https://lukeanger.com', 'http://2607:fb90:18d7:201b:8824:576:b0cc:b271:3000'],
+    origin: ['https://lukeanger.com/outwit', 'http://localhost:3000', 'https://lukeanger.com', 'http://192.168.1.128', 'http://localhost:3000/'],
     methods: ["GET", "POST"],
   }
 });
@@ -51,4 +41,16 @@ server.listen(3001, () => {
 
 // app.listen(3001, () => {
 //   console.log("Server listening on port 3001");
+// })
+
+// ------------------- CONNECT TO DATABASE -------------------------- //
+// mongoose.connect(process.env.MONGODB_URL, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// })
+
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", () => {
+//   console.log("Connected to MongoDB");
 // })
